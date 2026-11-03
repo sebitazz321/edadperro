@@ -1,0 +1,78 @@
+classDiagram
+    class Dog {
+      +Int id
+      +String name
+      +DogSize size
+      +Int years
+      +Int months
+      +CalcMode mode
+      +age() AgeInput
+    }
+    class DogSize {
+      <<enumeration>>
+      SMALL
+      MEDIUM
+      LARGE
+      GIANT
+    }
+    class CalcMode {
+      <<enumeration>>
+      SIMPLE
+      ADVANCED
+      SCIENTIFIC
+    }
+    class LifeStage {
+      <<enumeration>>
+      PUPPY
+      YOUNG
+      ADULT
+      SENIOR
+    }
+    class DogAgeResult {
+      +Double dogYears
+      +Double humanYears
+      +LifeStage stage
+      +Float lifeProgress
+    }
+    class DogAgeCalculator {
+      +parseAge(String, String) ParseResult
+      +humanYears(Double, DogSize, CalcMode) Double
+      +stageOf(Double, DogSize) LifeStage
+      +calculate(AgeInput, DogSize, CalcMode) DogAgeResult
+      +curve(DogSize, CalcMode) List
+    }
+    class DogValidator {
+      +MAX_DOGS = 20
+      +validate(name, years, months, existing, editingId) String?
+    }
+    class DogOps {
+      +nextId() upsert() delete()
+      +addMonths(Dog, Int) Dog
+      +summary(Dog) DogSummary
+      +stats(List~Dog~) DogStats
+    }
+    class DogsViewModel {
+      +List~Dog~ dogs
+      +String message
+      +Dog pendingLoad
+      +saveDog() deleteDog() addMonths() loadInCalculator()
+    }
+    class DogStore {
+      +load() List~Dog~
+      +save(List~Dog~)
+    }
+    class DogBot {
+      +greeting() String
+      +reply(String) String
+    }
+    Dog --> DogSize
+    Dog --> CalcMode
+    DogAgeResult --> LifeStage
+    DogAgeCalculator ..> DogAgeResult
+    DogOps ..> DogAgeCalculator
+    DogValidator ..> DogAgeCalculator
+    DogsViewModel --> DogStore
+    DogsViewModel ..> DogOps
+    DogsViewModel ..> DogValidator
+    DogsViewModel --> Dog
+    DogBot ..> DogAgeCalculator

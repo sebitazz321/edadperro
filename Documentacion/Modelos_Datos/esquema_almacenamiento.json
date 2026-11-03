@@ -1,0 +1,16 @@
+{
+  "$comment": "Almacenamiento local de Edad del Perro v2.0. SharedPreferences 'dogage_my_dogs', clave 'dogs_v1'. No hay base de datos en la nube.",
+  "dogs_v1": [{
+    "id": "number  // único, autoincremental",
+    "name": "string  // 2-20 letras, sin repetir (ignora tildes y mayúsculas)",
+    "size": "string  // SMALL | MEDIUM | LARGE | GIANT",
+    "years": "number // 0-30",
+    "months": "number // 0-11 (years + months > 0)",
+    "mode": "string  // SIMPLE | ADVANCED | SCIENTIFIC"
+  }],
+  "ejemplo": [
+    { "id": 1, "name": "Firulais", "size": "MEDIUM", "years": 5, "months": 0, "mode": "ADVANCED" },
+    { "id": 2, "name": "Luna", "size": "GIANT", "years": 7, "months": 6, "mode": "ADVANCED" },
+    { "id": 3, "name": "Toby", "size": "SMALL", "years": 0, "months": 4, "mode": "SIMPLE" }
+  ]
+}

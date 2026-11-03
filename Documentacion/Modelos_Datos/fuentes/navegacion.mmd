@@ -1,0 +1,7 @@
+flowchart LR
+    S([Abrir app]) --> C["🧮 Calculadora<br/>tamaño · edad · método<br/>resultado · gráfica"]
+    C <--> M["🐶 Mis perros<br/>lista · indicadores<br/>agregar · editar · eliminar"]
+    M <--> B["💬 Chatbot Pepe"]
+    C -- "💾 Guardar en Mis perros" --> F["Formulario de perro"]
+    M -- "＋ Agregar / Editar" --> F
+    M -- "🧮 Calcular" --> C

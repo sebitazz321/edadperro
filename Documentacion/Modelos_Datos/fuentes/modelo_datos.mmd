@@ -1,0 +1,36 @@
+erDiagram
+    DOG }o--|| DOG_SIZE : "tiene tamaño"
+    DOG }o--|| CALC_MODE : "se calcula con"
+    DOG ||--|| DOG_AGE_RESULT : "produce"
+    DOG_AGE_RESULT }o--|| LIFE_STAGE : "etapa"
+    DOG {
+        int id PK "autoincremental"
+        string name "2-20 letras, único"
+        string size FK "SMALL | MEDIUM | LARGE | GIANT"
+        int years "0-30"
+        int months "0-11"
+        string mode FK "SIMPLE | ADVANCED | SCIENTIFIC"
+    }
+    DOG_SIZE {
+        string name PK
+        string label
+        double yearlyRate "años humanos por año (desde el 3.º)"
+        double seniorFrom "edad senior"
+        double lifeExpectancy "años"
+    }
+    CALC_MODE {
+        string name PK
+        string label
+        string description
+    }
+    DOG_AGE_RESULT {
+        double dogYears
+        double humanYears
+        string stage FK
+        float lifeProgress "0..1"
+    }
+    LIFE_STAGE {
+        string name PK "PUPPY | YOUNG | ADULT | SENIOR"
+        string label
+        string tip
+    }

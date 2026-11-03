@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="868" viewBox="0 0 1100 868" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#555" stroke-width="1.6"/></marker></defs>
+<rect width="1100" height="868" fill="#fff"/>
+<rect x="230" y="40" width="560" height="808" rx="10" fill="#FAFCFC" stroke="#C85A22" stroke-width="2.2"/>
+<text x="510.0" y="68" text-anchor="middle" font-size="17" font-weight="700" fill="#C85A22">Edad del Perro — Casos de uso</text>
+<line x1="116" y1="400" x2="360.0" y2="120.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="284.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="366.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="448.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="530.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="612.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="694.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="116" y1="400" x2="360.0" y2="776.0" stroke="#7A8C89" stroke-width="1.4"/>
+<line x1="890" y1="575" x2="660.0" y2="448.0" stroke="#9FB0AD" stroke-width="1.3" stroke-dasharray="2 3"/>
+<line x1="890" y1="575" x2="660.0" y2="530.0" stroke="#9FB0AD" stroke-width="1.3" stroke-dasharray="2 3"/>
+<line x1="890" y1="575" x2="660.0" y2="612.0" stroke="#9FB0AD" stroke-width="1.3" stroke-dasharray="2 3"/>
+<line x1="890" y1="575" x2="660.0" y2="694.0" stroke="#9FB0AD" stroke-width="1.3" stroke-dasharray="2 3"/>
+<path d="M656.0,129 C700.0,129 700.0,193 656.0,193" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+<text x="695.0" y="165.0" font-size="12" fill="#555" stroke="#FAFCFC" stroke-width="5" paint-order="stroke" text-anchor="start">«include»</text>
+<path d="M656.0,293 C810.0,293 810.0,111 656.0,111" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+<text x="777.5" y="206.0" font-size="12" fill="#555" stroke="#FAFCFC" stroke-width="5" paint-order="stroke" text-anchor="start">«extend»</text>
+<ellipse cx="510.0" cy="120" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="115" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-01</text>
+<text x="510.0" y="133" text-anchor="middle" font-size="14" fill="#1F3B38">Calcular edad humana</text>
+<ellipse cx="510.0" cy="202" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="197" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-02</text>
+<text x="510.0" y="215" text-anchor="middle" font-size="14" fill="#1F3B38">Validar datos del perro</text>
+<ellipse cx="510.0" cy="284" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="279" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-03</text>
+<text x="510.0" y="297" text-anchor="middle" font-size="14" fill="#1F3B38">Ver etapa y gráfica</text>
+<ellipse cx="510.0" cy="366" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-04</text>
+<text x="510.0" y="379" text-anchor="middle" font-size="14" fill="#1F3B38">Conversar con Pepe</text>
+<ellipse cx="510.0" cy="448" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="443" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-05</text>
+<text x="510.0" y="461" text-anchor="middle" font-size="14" fill="#1F3B38">Guardar perro</text>
+<ellipse cx="510.0" cy="530" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="525" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-06</text>
+<text x="510.0" y="543" text-anchor="middle" font-size="14" fill="#1F3B38">Consultar Mis perros</text>
+<ellipse cx="510.0" cy="612" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="607" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-07</text>
+<text x="510.0" y="625" text-anchor="middle" font-size="14" fill="#1F3B38">Editar o eliminar perro</text>
+<ellipse cx="510.0" cy="694" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="689" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-08</text>
+<text x="510.0" y="707" text-anchor="middle" font-size="14" fill="#1F3B38">Actualizar edad (+1 mes / +1 año)</text>
+<ellipse cx="510.0" cy="776" rx="150" ry="32" fill="#FFEFE3" stroke="#C85A22" stroke-width="2"/>
+<text x="510.0" y="771" text-anchor="middle" font-size="12" font-weight="700" fill="#C85A22">CU-09</text>
+<text x="510.0" y="789" text-anchor="middle" font-size="14" fill="#1F3B38">Calcular un perro guardado</text>
+<g stroke="#1F3B38" stroke-width="2.2" fill="none">
+  <circle cx="90" cy="360" r="13" fill="#fff"/>
+  <line x1="90" y1="373" x2="90" y2="412"/>
+  <line x1="66" y1="387" x2="114" y2="387"/>
+  <line x1="90" y1="412" x2="70" y2="442"/>
+  <line x1="90" y1="412" x2="110" y2="442"/>
+</g>
+<text x="90" y="464" text-anchor="middle" font-size="16" font-weight="700" fill="#1F3B38">Dueño del perro</text>
+<rect x="890" y="540" width="140" height="70" rx="6" fill="#F3F5F5" stroke="#1F3B38" stroke-width="1.8"/>
+<text x="960" y="562" text-anchor="middle" font-size="12" fill="#555">«sistema»</text>
+<text x="960" y="582" text-anchor="middle" font-size="15" font-weight="700" fill="#1F3B38">DogStore</text>
+<text x="960" y="600" text-anchor="middle" font-size="12" fill="#555">almacenamiento local</text>
+</svg>

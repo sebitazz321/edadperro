@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph APP["App Android · Kotlin + Jetpack Compose (Material 3)"]
+      direction TB
+      U1["<b>Calculadora</b><br/>CalculatorScreen<br/>(+ AgeChart)"]
+      U2["<b>Mis perros</b><br/>MyDogsScreen<br/>DogFormDialog"]
+      U3["<b>Chatbot</b><br/>ChatScreen"]
+      V1["<b>DogsViewModel</b><br/>lista de perros, mensajes,<br/>perro a cargar"]
+      V2["<b>ChatViewModel</b><br/>mensajes del chat"]
+      L1["<b>DogAgeCalculator</b><br/>parseAge · humanYears<br/>stageOf · curve"]
+      L2["<b>DogValidator · DogOps</b><br/>validar, crear, editar,<br/>+1 mes, indicadores"]
+      L3["<b>DogBot</b><br/>chatbot Pepe por reglas"]
+      ST[("DogStore<br/>SharedPreferences (JSON)")]
+      U1 --> L1
+      U1 --> V1
+      U2 --> V1
+      U3 --> V2
+      V1 --> L2
+      V1 --> ST
+      V2 --> L3
+      L2 --> L1
+      L3 --> L1
+    end
