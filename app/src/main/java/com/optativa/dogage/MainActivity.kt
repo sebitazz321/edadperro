@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import com.optativa.dogage.ui.CalculatorScreen
 import com.optativa.dogage.ui.ChatScreen
 import com.optativa.dogage.ui.DogAgeTheme
@@ -39,21 +40,21 @@ fun DogApp(dogsVm: DogsViewModel = viewModel()) {
                 NavigationBarItem(
                     selected = tab == 0,
                     onClick = { tab = 0 },
-                    icon = { Text("🧮") },
+                    icon = { Text("🧮", Modifier.clearAndSetSemantics { }) },
                     label = { Text("Calculadora") }
                 )
                 NavigationBarItem(
                     selected = tab == 1,
                     onClick = { tab = 1 },
                     icon = {
-                        BadgedBox(badge = { if (dogsVm.dogs.isNotEmpty()) Badge { Text("${dogsVm.dogs.size}") } }) { Text("🐶") }
+                        BadgedBox(badge = { if (dogsVm.dogs.isNotEmpty()) Badge { Text("${dogsVm.dogs.size}") } }) { Text("🐶", Modifier.clearAndSetSemantics { }) }
                     },
                     label = { Text("Mis perros") }
                 )
                 NavigationBarItem(
                     selected = tab == 2,
                     onClick = { tab = 2 },
-                    icon = { Text("💬") },
+                    icon = { Text("💬", Modifier.clearAndSetSemantics { }) },
                     label = { Text("Chatbot") }
                 )
             }
@@ -62,7 +63,7 @@ fun DogApp(dogsVm: DogsViewModel = viewModel()) {
         when (tab) {
             0 -> CalculatorScreen(Modifier.padding(padding), dogsVm)
             1 -> MyDogsScreen(dogsVm, Modifier.padding(padding), onOpenCalculator = { tab = 0 })
-            else -> ChatScreen(Modifier.padding(padding))
+            else -> ChatScreen(Modifier.padding(padding), dogs = dogsVm.dogs)
         }
     }
 }

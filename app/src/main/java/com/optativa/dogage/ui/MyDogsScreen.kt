@@ -39,6 +39,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
@@ -231,7 +233,7 @@ private fun DogCard(
                 OutlinedButton(onClick = { onBirthday(12) }, contentPadding = PaddingValues(horizontal = 10.dp)) { Text("🎂 +1 año") }
                 TextButton(onClick = onCalculator) { Text("🧮 Calcular") }
                 TextButton(onClick = onEdit) { Text("Editar") }
-                TextButton(onClick = onDelete, modifier = Modifier.testTag("dog_delete_${dog.id}")) { Text("🗑️") }
+                TextButton(onClick = onDelete, modifier = Modifier.testTag("dog_delete_${dog.id}").semantics { contentDescription = "Eliminar a ${dog.name}" }) { Text("🗑️") }
             }
         }
     }

@@ -26,6 +26,9 @@ Documentacion/
 │   ├── Especificacion_Casos_Prueba     24 casos de prueba por caso de uso (IEEE 829)
 │   ├── Matriz_CasosUso_CasosPrueba.xlsx
 │   └── Diagramas/                      diagrama UML de casos de uso (PNG + SVG)
+├── 05_Mockups/                       mockups de alta fidelidad de las pantallas, diseño y accesibilidad
+├── 06_Seguridad/                     pruebas OWASP MASVS, análisis estático (mobsfscan antes/después), vulnerabilidades, re-pruebas, Kali/BadStore
+├── 07_Agente_IA/                     agente de IA «Pepe»: propósito, Gemini, controles, protección de la clave y escenarios de prueba
 ├── Modelos_Datos/                    modelo de datos, clases, arquitectura, navegación, esquema JSON
 └── Documentacion_Almacenamiento      persistencia local de «Mis perros» (la app no usa Firebase)
 ```

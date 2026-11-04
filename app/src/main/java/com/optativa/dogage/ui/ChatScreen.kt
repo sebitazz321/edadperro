@@ -30,14 +30,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.optativa.dogage.logic.AiConfig
+import com.optativa.dogage.logic.Dog
 import com.optativa.dogage.logic.DogBot
+import com.optativa.dogage.logic.MsgSource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatScreen(modifier: Modifier = Modifier, vm: ChatViewModel = viewModel()) {
+fun ChatScreen(modifier: Modifier = Modifier, dogs: List<Dog> = emptyList(), vm: ChatViewModel = viewModel()) {
     var input by rememberSaveable { mutableStateOf("") }
     val listState = rememberLazyListState()
 
@@ -56,6 +61,13 @@ fun ChatScreen(modifier: Modifier = Modifier, vm: ChatViewModel = viewModel()) {
             Column {
                 Text("🐶 Pepe, asistente canino", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
                 Text("Pregúntame por edad, cuidados y salud", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f))
+                Text(
+                    if (vm.aiEnabled) "🤖 Asistente con inteligencia artificial (${AiConfig.PROVIDER}). Puede equivocarse: consulta al veterinario ante síntomas."
+                    else "⚙️ Modo local sin IA (falta configurar GEMINI_API_KEY).",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier.padding(top = 4.dp).testTag("ai_disclosure")
+                )
             }
         }
 
@@ -69,7 +81,7 @@ fun ChatScreen(modifier: Modifier = Modifier, vm: ChatViewModel = viewModel()) {
             contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 12.dp)
         ) {
             items(vm.messages) { msg -> Bubble(msg) }
-            if (vm.typing) item { Bubble(ChatMessage("Pepe está escribiendo…", fromUser = false)) }
+            if (vm.typing) item { Bubble(ChatMessage("Pepe está escribiendo…", MsgSource.LOCAL)) }
         }
 
         LazyRow(
@@ -77,7 +89,7 @@ fun ChatScreen(modifier: Modifier = Modifier, vm: ChatViewModel = viewModel()) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(DogBot.SUGGESTIONS) { s ->
-                AssistChip(onClick = { vm.send(s) }, label = { Text(s) })
+                AssistChip(onClick = { vm.send(s, dogs) }, label = { Text(s) })
             }
         }
 
@@ -95,10 +107,13 @@ fun ChatScreen(modifier: Modifier = Modifier, vm: ChatViewModel = viewModel()) {
                 modifier = Modifier
                     .weight(1f)
                     .testTag("chat_input"),
-                maxLines = 3
+                maxLines = 3,
+                supportingText = if (input.length > AiConfig.MAX_INPUT_CHARS - 50) {
+                    { Text("${input.length}/${AiConfig.MAX_INPUT_CHARS}") }
+                } else null
             )
             Button(
-                onClick = { vm.send(input); input = "" },
+                onClick = { vm.send(input, dogs); input = "" },
                 enabled = input.isNotBlank() && !vm.typing,
                 modifier = Modifier.testTag("chat_send")
             ) { Text("Enviar") }
@@ -120,9 +135,22 @@ private fun Bubble(msg: ChatMessage) {
             ),
             color = if (msg.fromUser) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
             contentColor = if (msg.fromUser) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.widthIn(max = 300.dp)
+            modifier = Modifier
+                .widthIn(max = 300.dp)
+                .semantics(mergeDescendants = true) {
+                    contentDescription = (if (msg.fromUser) "Tú: " else if (msg.source == MsgSource.AI) "Pepe, con IA: " else "Pepe: ") + msg.text
+                }
         ) {
-            Text(msg.text, modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp))
+            Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+                if (!msg.fromUser) {
+                    Text(
+                        if (msg.source == MsgSource.AI) "🤖 IA · ${AiConfig.PROVIDER}" else "⚙️ Respuesta local",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+                Text(msg.text)
+            }
         }
     }
 }
